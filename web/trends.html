@@ -1,0 +1,784 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<link href="css/cropper.css" rel="stylesheet">
+	<title>游记发布</title>
+	</head>
+	<style type="text/css">
+	html,body{
+		height: 100%;
+		margin:0;
+		padding:0;
+	}
+	.add_title_picture{
+		position: relative;
+		width: 100%;
+		height: 65%;
+		/*opacity:0.4;*//*透明度*/
+		background-image: url(./background.jpg);
+		background-size:100%;
+	}
+	.add_picture_box{
+		display: flex;
+		height: 64px;
+		padding-top: 190px;
+		padding-left:40%; 
+	}
+	.add_picture_box input{
+		position:absolute;
+            right: 0px;
+            top: 0px;
+            opacity: 0;
+            -ms-filter: 'alpha(opacity=0)';
+            font-size: 200px;
+	}
+	.add_picture{
+		width: 64px;
+		height: 64px;
+	}
+	.add_picture_text_box{
+		margin-left: 20px;
+	}
+	.add_picture_title{
+		height: 40px;
+		line-height: 40px;
+	}
+	.add_pictutre_message{
+		height: 20px;
+		line-height: 20px;
+	}
+	.input_box{
+		position: absolute;
+		height: 60px;
+		width: 40%;
+		line-height: 60px;
+		margin-left: 30%;
+		bottom: 20px;
+		background: #ffffff;
+	}
+	.input{
+		height: 40px;
+		width: 96%;
+		outline:none;
+		margin-left: 2%;
+		border: #ffffff solid 0px;
+	}
+	.editer_box{
+		width: 100%;
+		display: flex;
+	}
+	.trends_message_box{
+		margin-top: 30px;
+		width:100%; 
+	}
+	.trends_message_boxs{
+		width:100%;
+		margin-top: 10px;
+	}
+	.editer_trends{
+		width:100%; 
+		/*overflow-y:visible;*/
+		outline:none;
+        border:solid #ffffff;
+        font-size:15px;
+        resize:none;
+	}
+	.editer_trends_box{
+		width:40%; 
+		margin-left: 30%;
+	}
+	.title_message{
+		width: 100%;
+		/*height: 40px;*/
+		display: flex;
+		font-size: 20px;
+		font-weight: bold;
+		line-height: 40px;
+	}
+	.cancle_title{
+		width: 20px;
+		height: 20px;
+		margin-left:20%;
+		margin-top: 10px;
+	}
+	.title_picture_box{
+		width: 100%;
+		position: relative;
+	}
+	.cancle_picture{
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		top: 5px;
+		right: 21%;
+	}
+	.title_picture{
+		width: 80%;
+	}
+	.add_editer_box{
+		width: 150px;
+		margin-top: 30px;
+		margin-left: 5%;
+	}
+	.add_editer{
+		display: flex;
+		margin-top: 15px;
+	}
+
+	.add_title{
+		height: 32px;
+		line-height: 32px;
+		margin-left: 10px;
+		font-weight: 500;
+	}
+	.add_pictures{
+		width: 32px;
+		height: 32px;
+		border-radius: 32px;
+		border: #F0AA54 solid 0.5px;
+	}
+	.title_box{
+		width: 450px;
+		height: 100px;
+		display: flex;
+		justify-content: flex-start;
+        flex-wrap:wrap;
+        border: #bbbbbb solid 1px;
+        background: #ffffff;
+        display: none;
+	}
+	.add_title_box{
+		width: 315px;
+		height: 40px;
+		line-height: 40px;
+		border-radius: 2rem;
+		border: #bbbbbb solid 1px;
+		margin-left: 20px;
+		margin-top: 30px;
+		
+	}
+	.title{
+		width: 295px;
+		height: 30px;
+		margin-left: 15px;
+		border: #ffffff;
+		outline: none;
+	}
+	.button{
+		width: 90px;
+		height: 40px;
+		border-radius: 2rem;
+		margin-left: 5px;
+		margin-top: 30px;
+		background: #ffffff;
+		outline: none;
+	}
+	.add_pictures_box{
+		width: 207px;
+		height: 250px;
+        border: #bbbbbb solid 1px;
+        display: none;
+        background: #ffffff;
+	}
+	.img-container{
+      width: 100%;
+      height: 630px;
+      position: absolute;
+      top:0px;
+      left: 0px;
+      display: none;
+    }
+    .cancle{
+      width: 32px;
+      height: 32px;
+      display: none;
+      position: absolute;
+      top:15px;
+      right: 20px;
+    }
+    .cancle img{
+      width: 32px;
+      height: 32px;
+    }
+    .get{
+      width: 32px;
+      height: 32px;
+      display: none;
+      position: absolute;
+      top:15px;
+      right: 70px;
+    }
+    .get img{
+      width: 32px;
+      height: 32px;
+    }
+    .button_box{
+    	height: 40px;
+    	width: 40%;
+    	position: fixed;
+    	bottom: 10px;
+    	display: flex;
+    	left: 30%;
+    	border: #bbbbbb solid 1px;
+    	border-radius: 5px;
+    	background: #ffffff;
+    }
+    .buttons{
+    	width: 14%;
+    	height: 40px;
+    	/*line-height: 40px;*/
+    	/*border-radius: 2rem;
+    	border: #bbbbbb solid 2px;*/
+    	text-align: center;
+    	/*background: #F0AA54;*/
+    	/*margin-left: 10%;*/
+    }
+    .icon{
+    	width: 30px;
+    	height: 30px;
+    	margin-top: 5px;
+    }
+    .icons{
+    	width: 42px;
+    	height: 30px;
+    	margin-top: 5px;
+    }
+    .blank{
+    	width: 100%;
+    	height: 50px;
+    }
+	</style>
+<body>
+	<div class="add_title_picture" id="add_title_picture" >
+          <div class="add_picture_box" >
+            <img class="add_picture" src="./icon/add_picture.png">
+            <input type="file"  id="inputImage" accept="image/*">
+            <div class="add_picture_text_box">
+              <div class="add_picture_title"><font size="5" face="Times"face="verdana">设置游记大图</font></div>
+              <div class="add_pictutre_message"><font size="4" face="Times"face="verdana"color="#444343">图片建议为高清大图</font></div>
+            </div>
+          </div>
+          <div class="input_box">
+            <input type="text" placeholder="填写游记标题" class="input"/>
+          </div>
+            
+        </div>
+        <div class="img-container" id="img-container">
+          <img  alt="Picture" class="picture" >
+        </div>
+        <div class="cancle" id="cancle" onclick="test()"><img src="./icon/cancle.png" /></div>
+        <div class="get" id="get" onclick="test()" data-method="getCroppedCanvas"><img src="./icon/get.png" /></div>
+	<div class="editer_box" id="editer_box">
+		<div class="editer_trends_box" id="editer_trends_box"><div class="trends_message_box" onclick="Div_id(this)"><textarea class="editer_trends" placeholder="记录美好旅行...." onclick="GetId(this)" ></textarea></div></div>
+	<div class="title_box" id="title_box">
+		<div class="add_title_box">
+        	<input type="text" placeholder="加入小标题" class="title" id="add_title1"/>
+        </div>
+        <button type="button" class="button" onclick="add_button(0)">添加</button>
+    </div>
+    <div class="add_pictures_box" id="add_pictures_box">
+        <div  id="drop_area" style="border:3px dashed silver;width:200px; height:200px">  
+            将图片拖拽到此  
+        </div>            
+        <progress value="0" max="10" id="prouploadfile"></progress>          
+        <span id="persent">0%</span>
+        <br/>
+        <button onclick="stopup()" id="stop">上传</button>
+    </div>
+</div>
+<div class="blank"></div>
+<div class="button_box" id="button_box">
+	<div class="buttons" ><img src="./icon/picture.png" class="icon" onclick="add_picture()"></div>
+	<div class="buttons" ><img  src="./icon/face.png" class="icon"></div>
+	<div class="buttons" ><img src="./icon/video.png" class="icon"/></div>
+	<div class="buttons" ><img  src="./icon/title.png" class="icon" onclick="add_title()"></div>
+	<div class="buttons" ><img src="./icon/music.png" class="icon"/></div>
+	<div class="buttons" onclick="getinner()"><img  src="./icon/preview.png" class="icons"></div>
+	<div class="buttons" onclick="getinner()"><img src="./icon/upload.png"class="icons"/></div>
+</div>
+</body>
+<script src='js/jquery-1.11.0.min.js'></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script><!-- 裁剪部分 -->
+<script src="js/cropper.js"></script><!-- 显示部分 -->
+<script src="js/main.js"></script>
+<script id="add_title" type="text/template">
+    <div class="title_message" id="{title_message_id}">{title}</div>
+    <div class="editer_trends_box"><textarea class="editer_trends" placeholder="记录" id="{editer_trends_id}"></textarea></div>
+ </script>
+ <script id="add_img" type="text/template">
+    <div class="add_image_box" id="{add_tltle_id}">
+        <div></div>
+    </div>
+ </script>
+<script type="text/javascript">
+	var a=0;
+	var b=0;
+	var text_id=0;
+	var picture_src="";
+		$(window).resize(function () {          //当浏览器大小变化时
+		    get_position();
+			change_position();
+		});
+		$(document).ready(function(){
+			
+			get_position();
+		});
+		//getAbsoluteTop(add_editer_box);
+		window.onscroll = function() {//为了保证兼容性，这里取两个值，哪个有值取哪一个
+			change_position();
+			//alert(scrollTop);
+		}
+		function get_position(){
+			getAbsoluteTop('editer_trends_box');
+			getAbsoluteLeft('editer_trends_box');
+			document.getElementById("add_title_picture").style.height=$(window).width()/3+"px";
+			document.getElementById("img-container").style.height=$(window).width()/3+"px";
+			var elems=document.getElementById("title_box");//获取控件
+				  elems.style.position = "absolute";//设置绝对定位（或者相对定位）
+				  elems.style.left = oLeft+"px";//设置left数值
+				  elems.style.top =oTop+"px";//设置top数值
+			var elems=document.getElementById("add_pictures_box");//获取控件
+				elems.style.position = "absolute";//设置绝对定位（或者相对定位）
+				elems.style.left = oLeft+"px";//设置left数值
+				elems.style.top =oTop+"px";//设置top数值
+		}
+		function change_position(){
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+　　			//scrollTop就是触发滚轮事件时滚轮的高度
+			if(scrollTop>oTop){
+				//alert('开始改变位置');
+				var elems=document.getElementById("title_box");//获取控件
+				  elems.style.position = "absolute";//设置绝对定位（或者相对定位）
+				  elems.style.left = oLeft+"px";//设置left数值
+				  elems.style.top =scrollTop+"px";//设置top数值
+				var elems=document.getElementById("add_pictures_box");//获取控件
+				  elems.style.position = "absolute";//设置绝对定位（或者相对定位）
+				  elems.style.left = oLeft+"px";//设置left数值
+				  elems.style.top =scrollTop+"px";//设置top数值
+			}
+			else{
+				var elems=document.getElementById("title_box");//获取控件
+				  elems.style.position = "absolute";//设置绝对定位（或者相对定位）
+				  elems.style.left = oLeft+"px";//设置left数值
+				  elems.style.top =oTop+"px";//设置top数值
+				var elems=document.getElementById("add_pictures_box");//获取控件
+				  elems.style.position = "absolute";//设置绝对定位（或者相对定位）
+				  elems.style.left = oLeft+"px";//设置left数值
+				  elems.style.top =oTop+"px";//设置top数值
+			}
+		}
+		function Div_id(id){
+			div_id=id;
+		}
+		function test(){
+        	document.getElementById('img-container').style.display="none";
+        	document.getElementById('cancle').style.display="none";
+        	document.getElementById('get').style.display="none";
+      	}
+		function add_button(value){
+			text_id++;
+			alert(pre);
+			var str=click.value;
+			alert(str);
+			str=str.replace(pre,""); 
+			alert(str);
+			click.value=pre;
+			makeExpandingArea(click);
+			if(value==0){
+				var nextdiv=document.createElement("div");
+				nextdiv.className="trends_message_boxs";
+				var textarea=document.createElement("textarea");
+				textarea.className="editer_trends";
+				textarea.value=str;
+				textarea.onclick=function(){GetId(textarea)};
+				nextdiv.appendChild(textarea);
+				x=nextdiv.getElementsByTagName("textarea");
+				var fatherdiv=document.createElement("div");
+				var cancle=document.createElement("img");
+				var add_title1=document.getElementById("add_title1");
+				fatherdiv.className="title_message";
+				cancle.className="cancle_title";
+				cancle.src="./icon/cancle.png";
+				var node=document.createTextNode(add_title1.value);
+				cancle.onclick= function (){delete_title(cancle)};
+				fatherdiv.onmouseover=function showcancle(){
+					cancle.style.display="flex";
+				}
+				fatherdiv.onmouseout=function hindcancle(){
+					cancle.style.display="none";
+				}
+				fatherdiv.appendChild(node);
+				fatherdiv.appendChild(cancle);
+				insertAfter(fatherdiv,div_id);
+				insertAfter(nextdiv,div_id);
+				document.getElementById("title_box").style.display="none";
+				a=0;
+			}
+			else if(value==1){
+				var nextdiv=document.createElement("div");
+				nextdiv.className="trends_message_boxs";
+				var textarea=document.createElement("textarea");
+				textarea.className="editer_trends";
+				textarea.value=str;
+				textarea.onclick=function(){GetId(textarea)};
+				nextdiv.appendChild(textarea);
+				makeExpandingArea(textarea);
+				x=nextdiv.getElementsByTagName("textarea");
+				var fatherdiv=document.createElement("div");
+				var cancle=document.createElement("img");
+				fatherdiv.className="title_picture_box";
+				cancle.className="cancle_picture";
+				cancle.src="./icon/cancle.png";
+				var img=document.createElement("img");
+				img.className="title_picture";
+				img.src=picture_src;
+				cancle.onclick= function (){delete_title(cancle)};
+				fatherdiv.onmouseover=function showcancle(){
+					cancle.style.display="flex";
+				}
+				fatherdiv.onmouseout=function hindcancle(){
+					cancle.style.display="none";
+				}
+				fatherdiv.appendChild(img);
+				fatherdiv.appendChild(cancle);
+				insertAfter(fatherdiv,div_id);
+				insertAfter(nextdiv,div_id);
+				document.getElementById("add_pictures_box").style.display="none";
+				b=0;
+			}		
+		}
+		function insertAfter(newElement, targetElement){
+			//alert("addaddadd");
+		    var parent = targetElement.parentNode;
+		    if(parent.lastChild == targetElement){
+		    	newElement.onclick=Div_id(newElement);
+		        parent.appendChild(newElement);
+		        if(newElement.firstChild=="[object HTMLTextAreaElement]"){
+		        	alert(newElement.firstChild.value);
+		        	makeExpandingArea(newElement.firstChild);
+		        }
+		    }else{
+		    	newElement.onclick=Div_id(newElement);
+		        parent.insertBefore(newElement,targetElement.nextSibling);
+		        if(newElement.firstChild=="[object HTMLTextAreaElement]"){
+		        	alert(newElement.firstChild.value);
+		        	makeExpandingArea(newElement.firstChild);
+		        }
+		    }
+		}
+		function GetId(el)
+		{
+			click=el;
+			id=event.srcElement.id;
+			makeExpandingArea(el);
+		}
+		function delete_title(cancle){
+			var parent=cancle.parentNode;
+			var prev=parent.previousSibling;
+			var next=parent.nextSibling;
+			var prev_textarea=prev.firstChild;
+			//alert(prev);
+			var next_textarea=next.firstChild;
+			var prev_textarea_value=prev_textarea.value;
+			var next_textarea_value=next_textarea.value;
+			var textarea_value=prev_textarea_value+next_textarea_value;
+			//alert(prev_textarea_value);
+			//alert(next_textarea_value);
+			//alert(textarea_value);
+			prev_textarea.value=textarea_value;
+			parents=parent.parentNode;
+
+			parents.removeChild(next);
+			parents.removeChild(parent);
+			
+		}
+		//获取控件上绝对位置
+		function getAbsoluteTop(objectId) {
+		o = document.getElementById(objectId);
+		oTop = o.offsetTop;
+		while(o.offsetParent!=null)
+		{  
+		oParent = o.offsetParent 
+		oTop += oParent.offsetTop  // Add parent top position
+		o = oParent
+		}
+		oTop=oTop+30;
+		return oTop
+		}
+		//获取控件左绝对位置
+		function getAbsoluteLeft(objectId) {
+		o = document.getElementById(objectId);
+		oLeft = o.offsetLeft+o.offsetWidth;
+		return oLeft
+		}
+	 // textarea 自适应高度  
+		function makeExpandingArea(el) {  
+		    var setStyle = function(el) {  
+		        el.style.height = 'auto';  
+		        el.style.height = el.scrollHeight + 'px';  
+		        // console.log(el.scrollHeight);  
+		    }  
+		    var delayedResize = function(el) {  
+		        window.setTimeout(function() {  
+		                setStyle(el)  
+		            },  
+		            0);  
+		    }  
+		    if (el.addEventListener) {  
+		        el.addEventListener('input', function() {  
+		            setStyle(el)  
+		        }, false);  
+		        setStyle(el)  
+		    } else if (el.attachEvent) {  
+		        el.attachEvent('onpropertychange', function() {  
+		            setStyle(el)  
+		        });  
+		        setStyle(el)  
+		    }  
+		    if (window.VBArray && window.addEventListener) { //IE9  
+		        el.attachEvent("onkeydown", function() {  
+		            var key = window.event.keyCode;  
+		            if (key == 8 || key == 46) delayedResize(el);  
+		        });  
+		        el.attachEvent("oncut", function() {  
+		            delayedResize(el);  
+		        }); //处理粘贴  
+		    }  
+		}  
+		// makeExpandingArea(editer_trends); 
+		function add_title(){
+			
+			a++;
+			if(a==1){
+				document.getElementById("title_box").style.display="flex";
+				getCursorPos(click);
+			}
+			if(a==2){
+				document.getElementById("title_box").style.display="none";
+				a=0;
+			}
+			
+		}
+		function add_picture(){
+			b++;
+			if(b==1){
+				document.getElementById("add_pictures_box").style.display="block";
+				getCursorPos(click);
+			}
+			if(b==2){
+				document.getElementById("add_pictures_box").style.display="none";
+				b=0;
+			}
+		}
+		function getCursorPos(pTextArea) {
+		  	var cursurPosition=-1;
+		  	if(pTextArea.selectionStart || pTextArea.selectionStart == '0'){//非IE浏览器
+		        cursurPosition= pTextArea.selectionStart;
+		    }else{//IE
+		        var range = document.selection.createRange();
+		        range.moveStart("character",-pTextArea.value.length);
+		        cursurPosition=range.text.length;
+		    }
+		    var textBox = click;
+        	pre = textBox.value.substr(0, cursurPosition);
+		    return cursurPosition;
+		}
+		document.addEventListener("drop",function(e){  //拖离   
+            e.preventDefault();      
+        })  
+        document.addEventListener("dragleave",function(e){  //拖后放   
+            e.preventDefault();      
+        })  
+        document.addEventListener("dragenter",function(e){  //拖进  
+            e.preventDefault();      
+        })  
+        document.addEventListener("dragover",function(e){  //拖来拖去    
+            e.preventDefault();      
+        })  
+        //上传进度  
+        var pro = document.getElementById('prouploadfile');  
+        var persent = document.getElementById('persent');  
+        function clearpro(){  
+            pro.value=0;  
+            persent.innerHTML="0%";  
+        }  
+          
+        //2.拖拽  
+        var stopbutton = document.getElementById('stop');  
+        var i=0;
+        var resultfile=""  
+        var box = document.getElementById('drop_area'); //拖拽区域     
+        box.addEventListener("drop",function(e){           
+            var fileList = e.dataTransfer.files; //获取文件对象    
+            console.log(fileList)  
+            //检测是否是拖拽文件到页面的操作            
+            if(fileList.length == 0){                
+                return false;            
+            }             
+            //拖拉图片到浏览器，可以实现预览功能    
+            //规定视频格式  
+            //in_array  
+            Array.prototype.S=String.fromCharCode(2);  
+            Array.prototype.in_array=function(e){  
+                var r=new RegExp(this.S+e+this.S);  
+                return (r.test(this.S+this.join(this.S)+this.S));  
+            };  
+            var video_type=["video/mp4","video/ogg"];  
+              
+            //创建一个url连接,供src属性引用  
+            var fileurl = window.URL.createObjectURL(fileList[0]);                
+            if(fileList[0].type.indexOf('image') === 0){  //如果是图片  
+                var str="<img width='200px' height='200px' src='"+fileurl+"'>";  
+                document.getElementById('drop_area').innerHTML=str;                   
+            }else if(video_type.in_array(fileList[0].type)){   //如果是规定格式内的视频                    
+                var str="<video width='200px' height='200px' controls='controls' src='"+fileurl+"'></video>";  
+                document.getElementById('drop_area').innerHTML=str;        
+            }else{ //其他格式，输出文件名  
+                //alert("不预览");  
+                var str="文件名字:"+fileList[0].name;  
+                document.getElementById('drop_area').innerHTML=str;      
+            }         
+            resultfile = fileList[0];     
+            console.log(resultfile);      
+              
+            //切片计算  
+            filesize= resultfile.size;  
+            setsize=500*1024;  
+            filecount = filesize/setsize;  
+            //console.log(filecount)  
+            //定义进度条  
+            pro.max=parseInt(Math.ceil(filecount));                            
+            // i = (i!=null && i!="")?parseInt(i):0    
+            // if(Math.floor(filecount)<i){  
+            //     alert("已经完成");  
+            //     pro.value=i+1;  
+            //     persent.innerHTML="100%";  
+              
+            // }else{  
+                //alert(i);  
+                pro.value=i;  
+                p=parseInt(i)*100/Math.ceil(filecount)  
+                persent.innerHTML=parseInt(p)+"%";  
+            // }  
+              
+        },false);    
+          
+        //3.ajax上传  
+  
+        var stop=1;  
+        function xhr2(){  
+            if(stop==1){  
+                return false;  
+            }  
+            if(resultfile==""){  
+                alert("请选择文件")  
+                return false;  
+            }   
+            i = (i!=null && i!="")?parseInt(i):0  
+              
+            if(Math.floor(filecount)<parseInt(i)){  
+                alert("已经完成");  
+                return false;  
+            }else{  
+                //alert(i)  
+            }  
+            var xhr = new XMLHttpRequest();//第一步  
+            //新建一个FormData对象  
+            var formData = new FormData(); //++++++++++  
+            //追加文件数据  
+              
+            //改变进度条  
+            pro.value=i+1;  
+            p=parseInt(i+1)*100/Math.ceil(filecount)  
+            persent.innerHTML=parseInt(p)+"%";  
+            //进度条  
+              
+              
+            if((filesize-i*setsize)>setsize){  
+                blobfile= resultfile.slice(i*setsize,(i+1)*setsize);  
+            }else{  
+                blobfile= resultfile.slice(i*setsize,filesize);  
+                formData.append('lastone', Math.floor(filecount));  
+            }  
+                formData.append('file', blobfile);  
+                //return false;  
+                formData.append('blobname', i); //++++++++++  
+    　　      formData.append('filename', resultfile.name); //++++++++++  
+                //post方式  
+                xhr.open('POST', './ajax.php'); //第二步骤  
+                //发送请求  
+                xhr.send(formData);  //第三步骤  
+                stopbutton.innerHTML = "暂停"  
+                //ajax返回  
+                xhr.onreadystatechange = function(){ //第四步  
+            　　　　if ( xhr.readyState == 4 && xhr.status == 200 ) {  
+            　　　　　　console.log( xhr.responseText );  
+                        if(i<filecount){  
+                            xhr2();  
+                        }else{  
+                        	//alert(xhr.responseText);
+                        	picture_src="";
+                        	picture_src="http://yfcat.com"+xhr.responseText;
+                        	stopbutton.innerHTML = "插入" ;
+                        	stop=2 
+                            i=0;  
+                        }         
+            　　　　}  
+            　　};  
+                //设置超时时间  
+                xhr.timeout = 20000;  
+                xhr.ontimeout = function(event){  
+            　　　　alert('请求超时，网络拥堵！低于25K/s');  
+            　　}           
+                  
+                i=i+1;  
+                //setCookie(resultfile.name,i,365)  
+                  
+        }                     
+        function stopup(){  
+            if(stop==1){  
+                stop = 0;                   
+                xhr2();  
+            }else if(stop==0){  
+                stop = 1  
+                stopbutton.innerHTML = "继续";     
+            } 
+            else{
+            	stop=1;
+            	stopbutton.innerHTML = "上传";
+            	add_button(1);
+            } 
+              
+        }  
+        function getinner(){
+        	var inner=document.getElementById('editer_trends_box');
+        	var x=inner.childNodes;
+       		var innerString="";
+       		for(var i=0;i<x.length;i++){
+       			if(x[i].firstChild=="[object HTMLTextAreaElement]"){
+       				var strContent=x[i].firstChild.value;
+       				strContent = strContent.replace(/\r\n/g, '<br/>'); //IE9、FF、chrome
+					strContent = strContent.replace(/\n/g, '<br/>'); //IE7-8
+					strContent = strContent.replace(/\s/g, ' '); //空格处理
+       				innerString+='<div class="message">'+strContent+'</div>';
+       				// innerString+=""+x[i].firstChild.value+"";
+       			}
+       			else if(x[i].firstChild=="[object Text]"){
+       				var str=x[i].innerHTML;
+       				str=str.replace('<img class="cancle_title" src="./icon/cancle.png" style="display: none;">',""); 
+       				innerString+='<div class="title">'+str+'</div>';
+       			}
+       			else{
+       				var str=x[i].innerHTML;
+       				str=str.replace('<img class="cancle_picture" src="./icon/cancle.png" style="display: none;">',""); 
+       				innerString+='<div class="picture_box">'+str+'</div>';
+       			}
+       		}
+       		alert(innerString);
+        }
+</script>
+</html>

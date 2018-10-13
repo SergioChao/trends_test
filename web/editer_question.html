@@ -1,0 +1,596 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> --> 
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<title>提问界面</title>
+</head>
+<style type="text/css">
+	html,body{
+	height: 100%;
+	margin:0;
+	padding:0;
+	}
+	.question_box{
+		width: 60%;
+		margin-left: 20%;
+		border-radius: 2rem;
+		border: #bbbbbb solid 1px;
+	}
+	.back{
+		width: 29%;
+		text-align: right;
+		margin-top: 20px;
+	}
+	.line_box{
+		width: 70%;
+		/*height: 40px;*/
+		margin-top: 10px;
+		margin-left: 15%;
+		display: flex;
+	}
+	.line_boxs{
+		width: 70%;
+		/*height: 40px;*/
+		margin-top: 10px;
+		margin-left: 15%;
+	}
+	.line_box input{
+		width: 63%;
+		margin-left:2%;
+		border-radius: 0.5rem;
+		outline: none;
+	}
+	.title_box{
+		width: 20%;
+		height: 40px;
+		text-align: right;
+		line-height: 40px;
+	}
+	.message_box{
+		width: 70%;
+		margin-left: 15%;
+		margin-top: 5px;
+	}
+	.editer_box {
+		width: 75%;
+		margin-left: 10%;
+		border: #bbbbbb solid 1px;
+	}
+	.editer_box textarea{
+		margin-top: 5px;
+		width: 96%;
+		margin-left: 2%;
+		font-size: 15px;
+		resize:none;
+		outline: none;
+		border: #ffffff;
+	}
+	.blank{
+		width: 100%;
+		height: 20px;
+	}
+	.blanks{
+		width: 100%;
+		height: 10px;
+	}
+	.button_box{
+		width: 100%;
+		height: 40px;
+		display: flex;
+		background: #E6E4E4;
+	}
+	.button{
+		margin-top: 5px;
+		width: 10%;
+		height: 30px;
+		text-align: center;
+	}
+	.button img{
+		width: 30px;
+		width: 30px;
+	}
+	.text_number{
+		margin-left: 2%;
+		color:#bbbbbb;
+	}
+	.shade{
+		width: 100%;
+		height: 100%;
+		top: 0px;
+		left: 0px;
+		position: fixed;
+		display: none;
+		background-color: rgba(0,0,0,0.4);
+	}
+	.add_picture_box{
+		width: 30%;
+		height: 30%;
+		background: #ffffff;
+		margin-left: 35%;
+		margin-top: 12.5%;
+		border-radius: 10px;
+		position: relative;
+	}
+	.top_title{
+		width: 20%;
+		height: 25px;
+		line-height: 25px;
+		margin-left: 15px;
+		padding-top: 15px;
+	}
+	.picture_box{
+		width: 94%;
+		height: 70%;
+		margin-left: 3%;
+		margin-top: 10px;
+		display: flex;
+		justify-content: flex-start;
+        flex-wrap:wrap;
+	}
+	.add_picture{
+		position: relative;
+		width: 16%;
+		left: 3%;
+		border-radius: 5px;
+		border: #000000 solid 2px;
+	}
+	.add_picture input{
+		position: absolute;
+			width: 100%;
+			height: 100%;
+            left: 0px;
+            top: 0px;
+            opacity: 0;
+            /*-ms-filter: 'alpha(opacity=0)';
+            font-size: 50px;*/
+	}
+	.add_icon{
+		width: 70%;
+		height: 70%;
+		margin-top: 15%;
+		margin-left: 15%;
+	}
+	.box{
+      position: relative;
+      width: 16%;
+      margin-left: 3%;
+    }
+    .shades{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      /*display: none;*/
+      background-color: rgba(0,0,0,0.4);
+    }
+    .picture{
+      width: 100%;
+      height: 100%;
+    }
+    .add_picture_list{
+    	width: 20%;
+    	height: 30px;
+    	background: #F0AA54;
+    	margin-left: 20px;
+    	outline: none;
+    }
+    .back_picture{
+    	position: absolute;
+    	width: 25px;
+    	height: 25px;
+    	top: 15px;
+    	right: 15px;
+    }
+    .back_src{
+    	width: 100%;
+    	height: 100%;
+    }
+    .cancle{
+    	position: absolute;
+    	display: none;
+    	width: 15px;
+    	height: 15px;
+    	right:5px;
+    	top:5px;
+    }
+    .cancle_icon{
+    	width: 15px;
+    	height: 15px;
+    }
+    .show_picture{
+    	width: 98%;
+    	margin-left: 1%;
+    	display: flex;
+    	justify-content: flex-start;
+        flex-wrap:wrap;
+    }
+    .picture_message{
+    	position: relative;
+    	width: 19%;
+    	margin-left: 1%;
+    }
+    .label_box{
+    	width: 75%;
+		margin-left:10%;
+		/*border: #bbbbbb solid 1px;
+		border-radius: 0.5rem;*/
+		display: flex;
+		justify-content: flex-start;
+        flex-wrap:wrap;
+    }
+    .label{
+    	position: relative;
+    	display: flex;
+    	margin-top: 15px;
+    	margin-left: 15px;
+    	height: 24px;
+    	border: #bbbbbb solid 1px;
+    	border-radius: 10px;
+    }
+    .label_message{
+    	margin-left: 20px;
+    	margin-right: 20px;
+    	height: 20px;
+    	margin-top: 2px;
+    	font-size: 13px;
+    	line-height: 20px;
+    }
+    .add_label{
+    	width: 24px;
+    	height: 24px;
+    	margin-left: 15px;
+    	border-radius: 24px;
+    	margin-top: 15px;
+    	border: #bbbbbb solid 0.5px;
+    }
+    .add_label img{
+    	width: 18px;
+    	height: 18px;
+    	margin-left: 3px;
+    	margin-top: 3px;
+    }
+    .editer_label{
+    	width: 100px;
+    	height: 20px;
+    	margin-left: 15px;
+    	margin-top: 15px;
+    	display: none;
+    }
+    .editer_label input{
+    	width: 100%;
+    	height: 100%;
+    }
+    .upload_question{
+    	width: 15%;
+    	height: 35px;
+    	margin-left: 10%;
+    	outline: none;
+    	background-color: rgb(240, 170, 84);
+    }
+</style>
+<body>
+	<div class="question_box">
+		<div class="back">返回问答页</div>
+		<div class="line_box"><div class="title_box">问题标题：</div><input type="text" placeholder="填写问题标题" id="get_title"/></div>
+		<div class="line_box"><div class="title_box">地点：</div><input type="text" placeholder="地点" id="get_position"/></div>
+		<div class="message_box"><div class="title_box">添加标签：</div><div class="label_box" id="label_box"><div class="label" style="background-color: rgb(255, 255, 255);" onclick="choose_label(this)"><div class="label_message">景点</div></div><div class="label" style="background-color: rgb(255, 255, 255);" onclick="choose_label(this)"><div class="label_message" >住宿</div></div><div class="label" style="background-color: rgb(255, 255, 255);" onclick="choose_label(this)"><div class="label_message" >美食</div></div><div class="label" style="background-color: rgb(255, 255, 255);" onclick="choose_label(this)"><div class="label_message">路线</div></div><div class="label" style="background-color: rgb(255, 255, 255);" onclick="choose_label(this)"><div class="label_message">特产</div></div><div title="添加标签" class="add_label" id="add_label" onclick="add_label(this)"><img src="./icon/add.png"/></div><div class="editer_label" id="editer_label"><input type="text" placeholder="添加标签" onkeypress="CheckInfo(this)"/></div></div></div>
+		<div class="message_box">
+			<div class="title_box">问题详情：</div>
+			<div class="editer_box">	
+				<div class="button_box">
+					<div class="button" onclick="show_shade()" title="图片"><img src="./icon/picture.png"></div>
+					<div class="button" title="表情"><img src="./icon/face.png"></div>
+				</div>
+				<textarea  placeholder="问题详情" id="textarea"></textarea>
+				<div class="text_number">0/800字</div>
+				<div class="show_picture" id="show_picture"></div>
+				<div class="blanks"></div>
+		</div>
+
+		<div class="blank"></div>
+	</div>
+	<div class="message_box">
+		<button class="upload_question" onclick="upload_question()">发布问题</button>
+	</div>
+	<div class="blank"></div>
+	<div class="shade" id="shade">
+		<div class="add_picture_box">
+			<div class="top_title">添加图片</div>
+			<div class="back_picture" onclick="back()"><img src="./icon/cancle.png" class="back_src"/></div>
+			<div class="picture_box" id="picture_box"><div class="add_picture" id="add_picture"><img src="./icon/add.png" class="add_icon"><input type="file"  id="inputImage" accept="image/*" onchange="ajax_update(this)"></div></div>
+			<button class="add_picture_list" onclick="add()">添加图片</button>
+		</div>
+	</div>
+</div>
+</body>
+<script src='js/jquery-1.11.0.min.js'></script>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+	var label_data=[];
+	var a=0;
+	var picture_data=[];
+	$(document).ready(function(){
+		var	add=document.getElementById('add_picture').offsetWidth;
+		document.getElementById('add_picture').height=add;
+	});
+	makeExpandingArea(textarea);
+	// textarea 自适应高度  
+		function makeExpandingArea(el) {  
+		    var setStyle = function(el) {  
+		        el.style.height = 'auto';  
+		        el.style.height = el.scrollHeight + 'px';  
+		        // console.log(el.scrollHeight);  
+		    }  
+		    var delayedResize = function(el) {  
+		        window.setTimeout(function() {  
+		                setStyle(el)  
+		            },  
+		            0);  
+		    }  
+		    if (el.addEventListener) {  
+		        el.addEventListener('input', function() {  
+		            setStyle(el)  
+		        }, false);  
+		        setStyle(el)  
+		    } else if (el.attachEvent) {  
+		        el.attachEvent('onpropertychange', function() {  
+		            setStyle(el)  
+		        });  
+		        setStyle(el)  
+		    }  
+		    if (window.VBArray && window.addEventListener) { //IE9  
+		        el.attachEvent("onkeydown", function() {  
+		            var key = window.event.keyCode;  
+		            if (key == 8 || key == 46) delayedResize(el);  
+		        });  
+		        el.attachEvent("oncut", function() {  
+		            delayedResize(el);  
+		        }); //处理粘贴  
+		    }  
+		}
+		function ajax_update(file){
+          i=0;
+          var fileList = file.files;
+           if(fileList.length == 0){                
+                return false;            
+            }             
+            //拖拉图片到浏览器，可以实现预览功能    
+            //规定视频格式  
+            Array.prototype.S=String.fromCharCode(2);  
+            Array.prototype.in_array=function(e){  
+                var r=new RegExp(this.S+e+this.S);  
+                return (r.test(this.S+this.join(this.S)+this.S));  
+            };  
+            var video_type=["video/mp4","video/ogg"];  
+              
+            //创建一个url连接,供src属性引用  
+            var fileurl = window.URL.createObjectURL(fileList[0]);                
+            if(fileList[0].type.indexOf('image') === 0){  //如果是图片  
+                // var str="<img width='200px' height='200px' src='"+fileurl+"'>";
+                var box=document.getElementById('picture_box');
+                var hight=box.offsetWidth/6;
+                var str="<div class='box' style='height:"+hight+"px' onmouseover='show_cancle(this)' onmouseout='hind_cancle(this)'><img class='picture' src='"+fileurl+"'><div class='shades' id='shades'></div><div class='cancle' onclick='delete_picture(this,0)'><img class='cancle_icon' src='./icon/cancle.png'/></div></div>";
+                document.getElementById('picture_box').innerHTML=str+document.getElementById('picture_box').innerHTML;                   
+            }else if(video_type.in_array(fileList[0].type)){   //如果是规定格式内的视频                    
+                var str="<video width='200px' height='200px' controls='controls' src='"+fileurl+"'></video>";  
+                document.getElementById('picture_box').innerHTML+=str;        
+            }else{ //其他格式，输出文件名  
+                var str="文件名字:"+fileList[0].name;  
+                document.getElementById('picture_box').innerHTML+=str;      
+            }         
+            resultfile = fileList[0];     
+            console.log(resultfile);      
+              
+            //切片计算  
+            filesize= resultfile.size;  
+            setsize=500*1024;  
+            filecount = filesize/setsize;  
+            //定义进度条  
+            // pro.max=parseInt(Math.ceil(filecount));   
+              
+              
+            i = (i!=null && i!="")?parseInt(i):0  
+              
+            if(Math.floor(filecount)<i){  
+                alert("已经完成"+i);  
+                //pro.value=i+1;  
+                // persent.innerHTML="100%";
+            }else{  
+                //pro.value=i;  
+                p=parseInt(i)*100/Math.ceil(filecount)  
+                // persent.innerHTML=parseInt(p)+"%";
+
+            }  
+            xhr2();
+        }
+        //3.ajax上传  
+        function xhr2(){   
+            if(resultfile==""){  
+                alert("请选择文件")  
+                return false;  
+            }  
+            console.log(i)  
+            i = (i!=null && i!="")?parseInt(i):0    
+            var xhr = new XMLHttpRequest();//第一步  
+            //新建一个FormData对象  
+            var formData = new FormData(); //++++++++++  
+            //追加文件数据  
+              
+            //改变进度条  
+            // pro.value=i+1;  
+            p=parseInt(i+1)*100/Math.ceil(filecount)  
+            // persent.innerHTML=parseInt(p)+"%";  
+            var box=document.getElementById('picture_box');
+            var hight=box.offsetWidth/10;
+            var shade_height=hight*(1-parseInt(p)/100);
+            document.getElementById('shades').style.height=shade_height+'px'; 
+            //进度条  
+              
+              
+            if((filesize-i*setsize)>setsize){  
+                blobfile= resultfile.slice(i*setsize,(i+1)*setsize);  
+            }else{  
+                blobfile= resultfile.slice(i*setsize,filesize);  
+                formData.append('lastone', Math.floor(filecount));  
+            }  
+                formData.append('file', blobfile);  
+                //return false;  
+                formData.append('blobname', i); //++++++++++  
+    　　      formData.append('filename', resultfile.name); //++++++++++  
+                //post方式  
+                xhr.open('POST', './ajax.php'); //第二步骤  
+                //发送请求  
+                xhr.send(formData);  //第三步骤  
+                // stopbutton.innerHTML = "暂停"  
+                //ajax返回  
+                xhr.onreadystatechange = function(){ //第四步  
+            　　　　if ( xhr.readyState == 4 && xhr.status == 200 ) {  
+            　　　　　　console.log( xhr.responseText );  
+                        if(i<filecount){  
+                            xhr2();  
+                        }else{ 
+                          //alert('http://yofea.com'+xhr.responseText);
+                          var my = document.getElementById("shades");
+                          if (my != null){
+                            my.parentNode.removeChild(my);
+                          }
+                          picture_data.push('http://yofea.com'+xhr.responseText);
+                          i=0;  
+                        }         
+            　　　　}  
+            　　};  
+                //设置超时时间  
+                xhr.timeout = 20000;  
+                xhr.ontimeout = function(event){  
+            　　　　alert('请求超时，网络拥堵！低于25K/s');  
+            　　}    
+            i++;        
+                  
+        }
+		function show_shade(){
+			document.getElementById('shade').style.display="block";
+			height=document.getElementById('picture_box').offsetWidth/6;
+			document.getElementById('add_picture').style.height=height+"px";		
+		} 
+		function add(){
+			document.getElementById('shade').style.display="none";
+			var box=document.getElementById('show_picture');
+            var hight=box.offsetWidth/5;
+            for(var i=0;i<picture_data.length;i++){
+				var str="<div class='picture_message' style='height:"+hight+"px' onmouseover='show_cancle(this)' onmouseout='hind_cancle(this)'><img class='picture' src='"+picture_data[i]+"'><div class='cancle' onclick='delete_picture(this,1)'><img class='cancle_icon' src='./icon/cancle.png'/></div></div>";
+				document.getElementById('show_picture').innerHTML+=str;
+			}
+			var str="<div class='add_picture' id='add_picture'><img src='./icon/add.png' class='add_icon'><input type='file'  id='inputImage' accept='image' onchange='ajax_update(this)'></div>";
+				document.getElementById('picture_box').innerHTML=str;
+			picture_data=[];
+		}
+		function back(){
+			document.getElementById('shade').style.display="none";
+		}
+		function show_cancle(el){
+			el.lastChild.style.display='block';
+		}
+		function hind_cancle(el){
+			el.lastChild.style.display='none';
+		}
+		function delete_picture(el,val){
+			var parent=el.parentNode;
+			var parents=parent.parentNode;
+			var x=parents.childNodes;
+			if(val==0){
+				for(var i=0;i<x.length-1;i++){
+					if(x[i]==parent){
+						var y=picture_data.length;
+						var num=y-i-1;
+						picture_data.splice(0,1);
+						x[i].parentNode.removeChild(x[i]);
+						console.log(picture_data);
+					}
+				}
+			}
+			else{
+				for(var i=0;i<x.length;i++){
+					if(x[i]==parent){
+						x[i].parentNode.removeChild(x[i]);
+					}
+				}
+			}		
+		}
+		function choose_label(label){
+			if(label.style.backgroundColor=='rgb(255, 255, 255)'){
+				label.style.backgroundColor='rgb(240, 170, 84)';
+			}
+			else{
+				label.style.backgroundColor='rgb(255, 255, 255)';
+			}			
+		}
+		function add_label(div){
+			if(a==0){
+				div.style.webkitTransform = 'rotate(45deg)';
+				div.style.mozTransform = 'rotate(45deg)';
+				div.style.msTransform = 'rotate(45deg)';
+				div.style.oTransform = 'rotate(45deg)';
+				div.style.transform = 'rotate(45deg)';
+				a++;
+				document.getElementById('editer_label').style.display='block';
+			}
+			else{
+				div.style.webkitTransform = 'rotate(0deg)';
+				div.style.mozTransform = 'rotate(0deg)';
+				div.style.msTransform = 'rotate(0deg)';
+				div.style.oTransform = 'rotate(0deg)';
+				div.style.transform = 'rotate(0deg)';
+				a=0;
+				document.getElementById('editer_label').style.display='none';
+				document.getElementById('editer_label').lastChild.value='';
+			}
+			
+		}
+		function CheckInfo(text)
+		{
+			if (event.keyCode==13)
+			{
+				targetElement=document.getElementById('add_label');
+				var fatherdiv=document.createElement("div");
+				var sondiv=document.createElement("div");
+				fatherdiv.className="label";
+				fatherdiv.style.backgroundColor='rgb(240, 170, 84)';
+				fatherdiv.onclick=function(){
+					choose_label(fatherdiv);
+				}
+				sondiv.className='label_message';
+				sondiv.innerHTML=text.value;
+				fatherdiv.appendChild(sondiv);
+				insertAfter(fatherdiv,targetElement);
+				targetElement.style.webkitTransform = 'rotate(0deg)';
+				targetElement.style.mozTransform = 'rotate(0deg)';
+				targetElement.style.msTransform = 'rotate(0deg)';
+				targetElement.style.oTransform = 'rotate(0deg)';
+				targetElement.style.transform = 'rotate(0deg)';
+				a=0;
+				document.getElementById('editer_label').style.display='none';
+				document.getElementById('editer_label').lastChild.value='';
+			}
+		}
+		function insertAfter(newElement, targetElement){
+		    var parent = targetElement.parentNode;
+		    parent.insertBefore(newElement,targetElement);
+		}
+		function upload_question(){
+			var title=document.getElementById('get_title').value;
+			var position=document.getElementById('get_position').value;
+			var x=document.getElementById('label_box').childNodes;
+			for(var i=0;i<x.length-2;i++){
+				if(x[i].style.backgroundColor=='rgb(240, 170, 84)'){
+					label_data.push(x[i].firstChild.innerHTML);
+				}
+			}
+			var message=document.getElementById('textarea').value;
+			var picture_message=document.getElementById('show_picture').innerHTML;
+			alert(title+' '+position+' '+label_data+' '+message+' '+picture_message);
+		}
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>动态发布</title>
+</head>
+<style type="text/css">
+.trends_message_box{
+	width: 70%;
+	margin-left: 15%;
+	display: block;
+}
+.message{
+	width: 80%;
+	margin-left: 10%;
+	font-size: 15px;
+}
+.title{
+	width: 80%;
+	margin-left: 10%;
+	font-size: 25px;
+	font-weight: bold;
+}
+.title_picture{
+	width: 50%;
+	margin-left: 10%;
+	border-radius: 1rem;
+}
+</style>
+<body>
+	<div class="top_picture"></div>
+	<div class="trends_message_box" id="trends_message_box"></div>
+</body>
+<script src='js/jquery-1.11.0.min.js'></script>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+	var message=document.getElementById('trends_message_box');
+	message.innerHTML='<div class="message">就撒回到<br/></div><div class="picture_box"><img class="title_picture" src="http://yfcat.com/api/ajax/picture/2018-09/19/2018091915040904064100.jpg"></div><div class="message">家哈</div><div class="title">萨达</div><div class="message">萨克和福克斯刚开始的</div>'
+</script>
+</html>

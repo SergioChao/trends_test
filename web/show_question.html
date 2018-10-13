@@ -1,0 +1,1148 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>问答详情</title>
+</head>
+<style type="text/css">
+	html,body{
+		height: 100%;
+		width: 100%;
+		margin:0;
+		padding:0;
+		background: #E6E2E2;
+	}
+	.web_box{
+		display: flex;
+		width: 100%;
+	}
+	.answers_box{
+		width: 100%;
+		background: #ffffff;
+		margin-top: 10px;
+		border: #bbbbbb solid 1px;
+		border-radius: 10px;
+		display: flex;
+	}
+	.ad_box{
+		width: 31%;
+		border: #bbbbbb solid 1px;
+	}
+	.question_message_box{
+		position: relative;
+		width: 100%;
+		background: #ffffff;
+		border: #bbbbbb solid 1px;
+	}
+	.question_box{
+		width: 52%;
+		margin-left: 12%;
+		margin-top: 10px;
+	}
+	.questioner_head{
+		width: 40px;
+		height: 40px;
+		margin-right: 15px;
+		margin-top: 5px;
+		margin-left: 15px;
+		border-radius: 40px;
+	}
+	.questioner_head img{
+		width: 100%;
+		height: 100%;
+		border:1px dashed silver;
+		border-radius: 50px;
+	}
+	.title{
+		height: 20px;
+		font-size: 25px;
+		font-weight: bold;
+	}
+	.question_message{
+		width: 96%;
+		margin-top: 20px;
+		font-size:20px;
+	}
+	.blank{
+		width: 100%;
+		height: 15px;
+	}
+	.label_list{
+		width: 52%;
+		margin-left: 11%;
+		margin-top: 15px;
+		display: flex;
+		justify-content: flex-start;
+        flex-wrap:wrap;
+	}
+	.label_list_footer{
+		position: relative;
+    	display: flex;
+		height: 26px;
+		margin-left: 15px;
+		border-radius: 15px;
+		border: #bbbbbb solid 1px;
+	}
+	.label_list_footer_label{
+		height: 26px;
+		margin-left: 15px;
+		margin-right: 15px;
+		line-height: 26px;		
+	}
+	.footer{
+		position: relative;
+		margin-top: 15px;
+		width: 52%;
+		height: 50px;
+		margin-left: 11%;
+		display: flex;
+		justify-content: flex-start;
+        flex-wrap:wrap;
+	}
+	.questioner_message{
+		height: 40px;
+		margin-top: 5px;
+		margin-left: 15px;
+	}
+	.questioner_name{
+		height: 24px;
+		line-height: 24px;
+		font-weight: bold;
+	}
+	.question_time{
+		height: 14px;
+		line-height: 14px;
+		margin-top: 2px;
+	}
+	.button_box{
+		position: absolute;
+		height: 36px;
+		width: 230px;
+		margin-top: 12px;
+		right: 15px;
+	}
+	.button_box button{
+		margin-left: 10px;
+		width: 100px;
+		height: 36px;
+		border-radius: 10px;
+		outline: none;
+		background: #ffffff;
+		border: #F0AA54 solid 1px;
+	}
+	.right_box{
+		position: absolute;
+		width: 24%;
+		right:12%;
+		top:40px;
+	}
+	.right_button{
+		margin-top: 20px;
+		margin-left: 18%;
+		height: 30px;
+		display: flex;
+	}
+	.right_button img{
+		height: 30px;
+		width: 30px;
+	}
+	.right_button div{
+		height: 30px;
+		line-height: 30px;
+		margin-left: 20px;
+	}
+	.answers_list{
+		width: 55%;
+		margin-left: 10%;
+		margin-top: 10px;
+	}
+	.ab_box{
+		width: 31%;
+		border: #bbbbbb solid 1px;
+	}
+	.answer_message{
+		width: 80%;
+		margin-top: 20px;
+	}
+	.message{
+	width: 100%;
+	font-size: 15px;
+	}
+	.title{
+		width: 100%;
+		height: 30px;
+		font-size: 25px;
+		font-weight: bold;
+	}
+	.title_picture{
+		width: 80%;
+		border-radius: 1rem;
+	}
+	.user_message_box{
+		width: 10%;
+		
+	}
+	.user_head{
+		width: 50%;
+		height:60px;
+		margin-left:25%;
+		margin-top: 10px;
+		
+	}
+	.user_head img{
+		width: 100%;
+		height: 100%;
+		border-radius: 100px;
+		border:1px dashed silver;
+	}
+	.user_id{
+		width: 80%;
+		margin-left: 10%;
+		margin-top: 10px;
+		text-align: center;
+	}
+	.badge_wall{
+		width: 80%;
+		margin-left: 10%;
+		text-align: center;
+	}
+	.footer_box{
+		position: relative;
+		width: 100%;
+		height: 40px;
+		display: flex;
+		justify-content: flex-start;
+        flex-wrap:wrap;
+	}
+	.footer_love{
+		width: 10%;
+		height: 30px;
+		margin-top: 5px;
+		line-height: 30px;
+		display: flex;
+	}
+	.footer_love img{
+		width: 30px;
+		height: 30px;
+	}
+	.footer_love div{
+		height: 30px;
+		line-height: 30px;
+		margin-left: 5px;
+	}
+	.footer_comment{
+		width: 10%;
+		height: 30px;
+		margin-top: 5px;
+		line-height: 30px;
+		margin-left: 3%;
+		display: flex;
+	}
+	.footer_comment img{
+		width: 35px;
+		height: 30px;
+	}
+	.footer_comment div{
+		height: 30px;
+		line-height: 30px;
+		margin-left: 5px;
+	}
+	.answer_time{
+		position: absolute;
+		height: 30px;
+		line-height: 30px;
+		bottom: 5px;
+		right: 10px;
+
+	}
+	.comment_box{
+		border: #bbbbbb solid 1px;
+		border-radius: 15px;
+		width: 100%;
+		display: block;
+	}
+	.comment_number{
+		width: 96%;
+		height: 40px;
+		line-height: 40px;
+		margin-left: 2%;
+	}
+	.comment_message_box{
+		border-top: #bbbbbb solid 1px;
+		width: 96%;
+		margin-left: 2%;
+	}
+	.comment_user_box{
+		position: relative;
+		width: 100%;
+		height: 50px;
+		display: flex;
+	}
+	.comment_user_box img{
+		height: 40px;
+		width: 40px;
+		border-radius: 40px;
+		border:1px dashed silver;
+		margin-top: 5px;
+	}
+	.comment_user_id{
+		height: 40px;
+		margin-top: 5px;
+		line-height: 40px;
+		margin-left: 10px;
+	}
+	.comment_creat_time{
+		position: absolute;
+		height: 40px;
+		line-height: 40px;
+		top: 5px;
+		right: 10px;
+	}
+	.comment_message{
+		width: 100%;
+		font-size: 15px;
+	}
+	.comment_footer{
+		width: 100%;
+		height: 40px;
+		display: flex;
+		margin-top: 5px;
+	}
+	.comment_footer_img{
+		width: 20px;
+		height: 20px;
+		margin-left: 25px;
+		margin-top: 10px;
+	}
+	.comment_footer div{
+		height: 20px;
+		line-height: 20px;
+		margin-top: 10px;
+		margin-left: 5px;
+	}
+	.good{
+		width: 20px;
+		height: 20px;
+		margin-top: 10px;
+		margin-left: 0px;
+	}
+	.comment_box_footer{
+		width: 100%;
+		border-top: #bbbbbb solid 1px;
+	}
+	.editer_answer_box{
+		width: 100%;
+		background: #ffffff;
+		border-radius: 5px;
+		margin-top: 10px;
+		display: none;
+	}
+	.editer_button_box{
+		width: 100%;
+		height: 40px;
+		background: #f2f3f2;
+		display: flex;
+	}
+	.button_model_box{
+		width: 14%;
+		height: 40px;
+		text-align: center;
+		margin-left: 2%;
+	}
+	.button_model_box img{
+		width: 24px;
+		height: 24px;
+		margin-top: 8px;
+	}
+	.preview_box{
+		width: 14%;
+		height: 40px;
+		text-align: center;
+		margin-left: 2%;
+	}
+	.preview{
+		width: 36px;
+		height: 24px;
+		margin-top: 8px;
+	}
+	.input{         
+		width:96%; 
+		margin-left: 2%;             
+		line-height:24px;            
+		font-size:16px;
+		outline: none;     
+	}        
+	.input:empty::before {            
+		content: attr(placeholder);        
+	}
+	.title_style{
+		font-size: 20px;
+		font-weight: bold;
+	}
+	.picture_box{
+		width: 50%;
+	}
+	.picture_box img{
+		width: 100%;
+	}
+	.editer_title_box{
+		position: absolute;
+		width: 350px;
+		height: 64px;
+		background: #F0AA54;
+		border-radius: 5px;
+		display: none;
+	}
+	.title_input_box{
+		width: 70%;
+		height: 40px;
+		margin-top: 12px;
+		margin-left: 10px;
+		background: #ffffff;
+		border-radius: 5px;
+	}
+	.title_input{
+		width: 80%;
+		height: 30px;
+		outline: none;
+		border: #ffffff;
+		margin-left: 10px;
+		margin-top: 5px;
+	}
+	.title_button{
+		outline: none;
+		width: 20%;
+		height: 40px;
+		margin-top: 12px;
+		margin-left: 10px;
+		border-radius: 5px;
+	}
+	.title_box{
+		width: 450px;
+		height: 100px;
+		display: flex;
+		justify-content: flex-start;
+        flex-wrap:wrap;
+        border: #bbbbbb solid 1px;
+        background: #ffffff;
+        display: none;
+	}
+	.add_title_box{
+		width: 315px;
+		height: 40px;
+		line-height: 40px;
+		border-radius: 2rem;
+		border: #bbbbbb solid 1px;
+		margin-left: 20px;
+		margin-top: 30px;
+		
+	}
+	.button{
+		width: 90px;
+		height: 40px;
+		border-radius: 2rem;
+		margin-left: 5px;
+		margin-top: 30px;
+		background: #ffffff;
+		outline: none;
+	}
+	.add_pictures_box{
+		width: 207px;
+		height: 250px;
+        border: #bbbbbb solid 1px;
+        display: none;
+        background: #ffffff;
+	}
+	.face_image_box{
+		position: absolute;
+		display: none;
+		justify-content: flex-start;
+        flex-wrap:wrap;
+        width: 400px;
+        background: #ffffff;
+	}
+	.face_image{
+		width: 30px;
+		height: 30px;
+		margin-left: 5px;
+		margin-top: 5px;
+	}
+	.face_image img{
+		width: 100%;
+		height: 100%;
+	}
+	.add_face_image{
+		width: 20px;
+		height: 20px;
+	}
+	.comment_input_{
+		width: 79%;
+		margin-bottom: 5px;
+		border: #bbbbbb solid 1px;  
+	}
+	.comment_input{         
+		width:98%;         
+		line-height:24px;            
+		font-size:16px;
+		outline: none; 
+		margin-left: 2%;
+		margin-top: 5px;   
+		border-radius: 5px; 
+	}        
+	.comment_input:empty::before {            
+		content: attr(placeholder);        
+	}
+	.write_comment{
+		margin-top: 5px;
+		width: 96%;
+		margin-left: 2%;
+		position: relative;
+	}
+	.comment_inputs_{
+		width: 90%;
+		margin-bottom: 5px;
+		border: #bbbbbb solid 1px;  
+	}
+	.comment_inputs{         
+		width:98%;         
+		line-height:24px;            
+		font-size:16px;
+		outline: none; 
+		margin-left: 2%;
+		border-radius: 5px;
+	}  
+	.write_comment button{
+		position: absolute;
+		width: 8%;
+		height: 26px;
+		border-radius: 5px;
+		outline: none;
+		text-align: center;
+		right:0px;
+		bottom:0px;
+	}    
+	.comment_inputs:empty::before {            
+		content: attr(placeholder);        
+	}
+	.comment_input_box{
+		width: 100%;
+		display: flex;
+	}
+	.comment_input_box button{
+		width: 9%;
+		margin-left: 1%;
+		height: 35px;
+		margin-bottom: 5px;
+		border-radius: 5px;
+		outline: none;
+	}
+	.suspend_box{
+		position: absolute;
+		width: 40px;
+		height: 135px;
+		right: 50px;
+		bottom: 100px;
+		display: none;
+	}
+	.suspend{
+		width: 40px;
+		height: 40px;
+		margin-top: 5px;
+		border: #bbbbbb solid 1px;
+		background: #ffffff;
+		border-radius: 5px;
+	}
+	.suspend img{
+		width: 30px;
+		height: 30px;
+		margin-top: 5px;
+		margin-left: 5px;
+	}
+</style>
+<body>
+	<div class="question_message_box">
+		<div class="question_box">
+			<div class="title">问题标题问题标题问题标题问题标题</div>
+			<div class="question_message">你们都说讨厌抖音里哪个网红，掰着手指一二三四五数落着人的缺点，不顾别人有多努力，一点作为现代四有青年的包容心都没有</br></br>我就不一样了，我讨厌抖音</div>
+		</div>
+		<div class="label_list">
+			<div class="label_list_footer"><div class="label_list_footer_label">美食</div></div>
+			<div class="label_list_footer"><div class="label_list_footer_label">路线</div></div>
+			<div class="label_list_footer"><div class="label_list_footer_label">美景</div></div>
+			<div class="label_list_footer"><div class="label_list_footer_label">攻略</div></div>
+		</div>
+		<div class="footer">
+			<div class="questioner_head"><img src="./icon/head.png"/></div>
+			<div class="questioner_message">
+				<div class="questioner_name">提问者id</div>
+				<div class="question_time">2018-9-21 20:23</div>
+			</div>
+			<div class="button_box">
+			<button>关注</button>
+			<button onclick="show_answer_editer()">回答</button>
+		</div>
+		</div>
+		<div class="blank"></div>
+		<div class="right_box">
+			<div class="right_button"><img src="./icon/follow.png"/><div>123人关注</div></div>
+			<div class="right_button"><img src="./icon/eye.png"/><div>132次浏览</div></div>
+			<div class="right_button"><img src="./icon/share.png"/><div>123次分享</div></div>
+			<div class="right_button"><img src="./icon/report.png"/><div>举报</div></div>
+		</div>
+	</div>
+	<div class="web_box">
+		<div class="answers_list">
+			<div class="editer_answer_box" id="editer_answer_box">
+				<div class="editer_answer">
+					<div class="blank"></div>
+					<div class='input' id="divElement" contenteditable placeholder='请输入回答'></div>
+					<div class="blank"></div>
+				</div>
+				<div class="editer_button_box">
+					<div class="button_model_box" onclick="add_picture(0)" title='添加图片'><img src="./icon/picture.png"/></div>
+					<div class="button_model_box" onclick="show_face_box()" title='添加表情'><img src="./icon/face.png"/></div>
+					<div class="button_model_box" onclick="add_title()" title='添加标题'><img src="./icon/title.png"/></div>
+					<div class="button_model_box" onclick="add_picture(3)" title='添加视频'><img src="./icon/video.png"/></div>
+					<div class="preview_box" title='发送'><img class="preview" src="./icon/go.png"/></div>
+				</div>
+			</div>
+			<div class="answers_box">
+				<div class="user_message_box">
+					<div class="user_head"><img src="./icon/head.png"/></div>
+					<div class="user_id">答者id</div>
+					<div class="badge_wall">成就墙</div>
+				</div>
+				<div class="answer_message">
+				<div class="message">就撒回到<br/></div><div class="picture_box"><img class="title_picture" src="http://yfcat.com/api/ajax/picture/2018-09/19/2018091915040904064100.jpg"></div><div class="message">家哈</div><div class="title">萨达</div><div class="message">萨克和福克斯刚开始的</div>
+				<div class="footer_box">
+					<div class="footer_love"><img src="./icon/love.png"/><div>999+</div></div>
+					<div class="footer_comment"><img src="./icon/collect.png"/><div>999+</div></div>
+					<div class="footer_comment" onclick="show_comment(this)"><img src="./icon/comment.png"/><div>999+</div></div>
+					<div class="footer_comment"><img src="./icon/report.png"/><div>举报</div></div>
+					<div class="answer_time">2018/9/25 14:04</div>
+				</div>
+				<!-- <div class="comment_box" id="comment_box">
+					<div class="comment_number">123条评论</div>
+					<div class="comment_message_box">
+						<div class="comment_user_box"><img src="./icon/head.png"/><div class="comment_user_id">用户id</div><div class="comment_creat_time">201/9/25</div></div>
+						<div class="comment_message">不是我吹，上个暑假晚上9点左右我在逛街，经过某个变压器时听到那个变压器发出了奇怪的声音，于是打个电话给国家电网，报告说某某变压器发出异常响声，那边要我说下地址，然后就挂了电话。后来，10分钟不到就有人打电话给我，问我是哪个变压器，说他去看看。15分钟左右那个人又打了电话给我，问我：“那个变压器没问题啊，你说的是哪？”(第一次的确是我没说清楚。)于是我就更具体的说了下那个变压器的位置。</div>
+						<div class="comment_footer"><img class="good" src="./icon/good.png"/><div>123个赞</div><img class="comment_footer_img" src="./icon/bad.png"/><div>123个踩</div><img class="comment_footer_img" src="./icon/reply.png"/><div>回复</div></div>
+					</div>
+					<div class="comment_message_box">
+						<div class="comment_user_box"><img src="./icon/head.png"/><div class="comment_user_id">用户id</div><div class="comment_creat_time">201/9/25</div></div>
+						<div class="comment_message">不是我吹，上个暑假晚上9点左右我在逛街，经过某个变压器时听到那个变压器发出了奇怪的声音，于是打个电话给国家电网，报告说某某变压器发出异常响声，那边要我说下地址，然后就挂了电话。后来，10分钟不到就有人打电话给我，问我是哪个变压器，说他去看看。15分钟左右那个人又打了电话给我，问我：“那个变压器没问题啊，你说的是哪？”(第一次的确是我没说清楚。)于是我就更具体的说了下那个变压器的位置。</div>
+						<div class="comment_footer"><img class="good" src="./icon/good.png"/><div>123个赞</div><img class="comment_footer_img" src="./icon/bad.png"/><div>123个踩</div><img class="comment_footer_img" src="./icon/reply.png"/><div>回复</div></div>
+					</div>
+					<div class="comment_message_box">
+						<div class="comment_user_box"><img src="./icon/head.png"/><div class="comment_user_id">用户id</div><div class="comment_creat_time">201/9/25</div></div>
+						<div class="comment_message">不是我吹，上个暑假晚上9点左右我在逛街，经过某个变压器时听到那个变压器发出了奇怪的声音，于是打个电话给国家电网，报告说某某变压器发出异常响声，那边要我说下地址，然后就挂了电话。后来，10分钟不到就有人打电话给我，问我是哪个变压器，说他去看看。15分钟左右那个人又打了电话给我，问我：“那个变压器没问题啊，你说的是哪？”(第一次的确是我没说清楚。)于是我就更具体的说了下那个变压器的位置。</div>
+						<div class="comment_footer"><img class="good" src="./icon/good.png"/><div>123个赞</div><img class="comment_footer_img" src="./icon/bad.png"/><div>123个踩</div><img class="comment_footer_img" src="./icon/reply.png"/><div>回复</div></div>
+					</div>
+					<div class="comment_box_footer">
+						<div class="write_comment">
+							<textarea class="editer_trends" placeholder="编写评论..." onclick="GetId(this)" ></textarea>
+							<button >评论</button>
+						</div>
+					</div>
+				</div> -->
+				<div class="blank"></div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="ad_box" id="ad_box"></div>
+	</div>
+	<div class="editer_title_box" id="editer_title_box">
+		<div class="title_input_box" id="title_input_box" >
+			<input type="text" class="title_input" placeholder="请输入标题" id="title_input"/>
+		</div>
+		<button class="title_button" onclick="updata_title()">提交</button>
+	</div>
+	<div class="add_pictures_box" id="add_pictures_box">
+        <div  id="drop_area" style="border:3px dashed silver;width:200px; height:200px">  
+            将图片拖拽到此  
+        </div>            
+        <progress value="0" max="10" id="prouploadfile"></progress>          
+        <span id="persent">0%</span>
+        <br/>
+        <button onclick="stopup()" id="stop">上传</button>
+    </div>
+    <div class="face_image_box" id="face_image_box"></div>
+    <div class="suspend_box" id="suspend_box">
+    	<div class="suspend" id="up" onclick="jump(0)"><img src="./icon/up.png"/></div>
+    	<div class="suspend" id="up" ><img src="./icon/up.png"/></div>
+    	<div class="suspend" id="down" onclick="jump(1)"><img src="./icon/down.png"/></div>
+    </div>
+</body>
+<script src='js/jquery-1.11.0.min.js'></script>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+	var a=0;
+	$(document).ready(function(){
+		for(var i=0;i<72;i++){
+			var x=document.getElementById('face_image_box');
+			x.innerHTML+='<div class="face_image" onclick="add_face('+i+')"><img src="./face/'+i+'.gif"/></div>';
+		}
+		get_position();
+	});
+	window.onscroll = function() {//窗口滚动事件
+			change_position();
+			//alert(scrollTop);
+	}
+	function jump(val){
+		if(val==0){
+			$('html').scrollTop(0);
+		}
+		else{
+			var height=$('html').height();
+			$('html').scrollTop(height);
+		}
+	}
+	function mouseOver(but,str){
+		
+	}
+	function mouseOut(but){
+
+	}
+	function change_position(){
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			stop=scrollTop;
+　　			//scrollTop就是触发滚轮事件时滚轮的高度
+			if(stop>0){
+				var elems=document.getElementById("suspend_box");//获取控件
+				var height=$(window).height()-200;
+				elems.style.display="block";
+				elems.style.position = "absolute";//设置绝对定位（或者相对定位）
+				elems.style.left = oLeft+50+"px";//设置left数值
+				elems.style.top =stop+height+"px";//设置top数值
+			}
+			else if(stop==0){
+				var elems=document.getElementById("suspend_box");//获取控件
+				var height=$(window).height()-200;
+				elems.style.display="none";
+				elems.style.position = "absolute";//设置绝对定位（或者相对定位）
+				elems.style.left = oLeft+"px";//设置left数值
+				elems.style.top =scrollTop+height+"px";//设置top数值
+			}
+			if(scrollTop>oTop){
+				var elems=document.getElementById("editer_title_box");//获取控件
+				elems.style.position = "absolute";//设置绝对定位（或者相对定位）
+				elems.style.left = oLeft+"px";//设置left数值
+				elems.style.top =scrollTop+"px";//设置top数值
+				var elems=document.getElementById("add_pictures_box");//获取控件
+				elems.style.position = "absolute";//设置绝对定位（或者相对定位）
+				elems.style.left = oLeft+"px";//设置left数值
+				elems.style.top =scrollTop+"px";//设置top数值
+				var elems=document.getElementById("face_image_box");//获取控件
+				elems.style.position = "absolute";//设置绝对定位（或者相对定位）
+				elems.style.left = oLeft+"px";//设置left数值
+				elems.style.top =scrollTop+"px";//设置top数值		
+			}
+			else{
+				var elems=document.getElementById("editer_title_box");//获取控件
+				elems.style.position = "absolute";//设置绝对定位（或者相对定位）
+				elems.style.left = oLeft+"px";//设置left数值
+				elems.style.top =oTop+"px";//设置top数值
+				var elems=document.getElementById("add_pictures_box");//获取控件
+				elems.style.position = "absolute";//设置绝对定位（或者相对定位）
+				elems.style.left = oLeft+"px";//设置left数值
+				elems.style.top =oTop+"px";//设置top数值
+				var elems=document.getElementById("face_image_box");//获取控件
+				elems.style.position = "absolute";//设置绝对定位（或者相对定位）
+				elems.style.left = oLeft+"px";//设置left数值
+				elems.style.top =oTop+"px";//设置top数值
+			}
+	}
+	function get_position(){
+		getAbsoluteTop('ad_box');
+		getAbsoluteLeft('ad_box');
+		var elems=document.getElementById("editer_title_box");//获取控件
+		elems.style.position = "absolute";//设置绝对定位（或者相对定位）
+		elems.style.left = oLeft+"px";//设置left数值
+		elems.style.top =oTop+"px";//设置top数值
+		var elems=document.getElementById("add_pictures_box");//获取控件
+		elems.style.position = "absolute";//设置绝对定位（或者相对定位）
+		elems.style.left = oLeft+"px";//设置left数值
+		elems.style.top =oTop+"px";//设置top数值
+		var elems=document.getElementById("face_image_box");//获取控件
+		elems.style.position = "absolute";//设置绝对定位（或者相对定位）
+		elems.style.left = oLeft+"px";//设置left数值
+		elems.style.top =oTop+"px";//设置top数值
+	}
+	//获取控件上绝对位置
+	function getAbsoluteTop(objectId) {
+		o = document.getElementById(objectId);
+		oTop = o.offsetTop;
+		while(o.offsetParent!=null)
+	{  
+		oParent = o.offsetParent 
+		oTop += oParent.offsetTop  // Add parent top position
+		o = oParent
+	}
+		oTop=oTop+20;
+		return oTop
+	}
+	//获取控件左绝对位置
+	function getAbsoluteLeft(objectId) {
+		o = document.getElementById(objectId);
+		oLeft = o.offsetLeft;
+		return oLeft
+	}
+	function add_message(str,val){
+		//判断光标
+	    if(val==0){
+	        insertContent('</br><div class="picture_box"><img src="'+str+'"></div></br>');//指定位置插入图片
+	       	$(divElement).blur();//失去焦点
+	    }
+	    else if(val==1){
+	    	insertContent('<img class="add_face_image" src="./face/'+str+'.gif">');//指定位置插入表情
+	       	$(divElement).blur();//失去焦点
+	    }
+	    else if(val==2){
+	    	insertContent('</br><div class="title_style">'+str+'</div></br>');//指定位置插入标题
+	       	$(divElement).blur();//失去焦点
+	    }   	
+	}
+	function show_face_box(){
+	    $(divElement).focus();//获取焦点
+	    saveRange();//保存光标位置
+	    $(divElement).blur();//失去焦点
+		if(document.getElementById('face_image_box').style.display=="flex"){
+			document.getElementById('face_image_box').style.display="none";
+		}
+		else{
+			document.getElementById('face_image_box').style.display="flex";
+		}
+	}
+	function add_face(val){
+		document.getElementById('face_image_box').style.display="none";
+		add_message(val,1);
+	}
+	function add_title(){
+	    $(divElement).focus();//获取焦点
+	    saveRange();//保存光标位置
+	    $(divElement).blur();//失去焦点
+		if(document.getElementById('editer_title_box').style.display=="flex"){
+			document.getElementById('editer_title_box').style.display="none";
+		}
+		else{
+			document.getElementById('editer_title_box').style.display="flex";
+		}
+	}
+	function add_picture(){
+	    $(divElement).focus();//获取焦点
+	    saveRange();//保存光标位置
+	    $(divElement).blur();//失去焦点
+		if(document.getElementById('add_pictures_box').style.display=="block"){
+			document.getElementById('add_pictures_box').style.display="none";
+		}
+		else{
+			document.getElementById('add_pictures_box').style.display="block";
+		}
+	}
+	function updata_title(){
+		var str=document.getElementById('title_input').value;
+		if(str!=null){
+			document.getElementById('title_input').value=null;
+			document.getElementById('editer_title_box').style.display="none";
+			add_message(str,2);
+		}
+	}
+	//保存光标位置
+    function saveRange() {
+         var selection = window.getSelection ? window.getSelection() : document.selection;
+         if (!selection.rangeCount) return;
+         var range = selection.createRange ? selection.createRange() : selection.getRangeAt(0);
+         window._range = range;
+    }
+    //插入内容
+    function insertContent(str){
+        var selection, range = window._range;
+        if (!window.getSelection) {
+            range.pasteHTML(str);
+            range.collapse(false);
+            range.select();
+        } 
+        else {
+            selection = window.getSelection ? window.getSelection() : document.selection;
+            range.collapse(false);
+            var hasR = range.createContextualFragment(str);
+            var hasR_lastChild = hasR.lastChild;
+            while (hasR_lastChild && hasR_lastChild.nodeName.toLowerCase() == "br" && hasR_lastChild.previousSibling && hasR_lastChild.previousSibling.nodeName.toLowerCase() == "br") {
+                var e = hasR_lastChild;
+                hasR_lastChild = hasR_lastChild.previousSibling;
+                hasR.removeChild(e);
+            }
+            range.insertNode(hasR);
+            if (hasR_lastChild) {
+                range.setEndAfter(hasR_lastChild);
+                range.setStartAfter(hasR_lastChild);
+            }
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }      
+    }
+	function show_comment(div){
+		var parent=div.parentNode;
+		var next=parent.nextSibling;
+		if(next.className=="comment_box"){
+			parent.parentNode.removeChild(next);
+		}
+		else{
+			var comment_box=document.createElement("div");
+		comment_box.className="comment_box";
+		var comment_number=document.createElement("div");
+		comment_number.className="comment_number";
+		comment_number.innerHTML="123条评论"
+		comment_box.appendChild(comment_number);
+		comment_box.innerHTML+='<div class="comment_message_box"><div class="comment_user_box"><img src="./icon/head.png"/><div class="comment_user_id">用户id</div><div class="comment_creat_time">201/9/25</div></div><div class="comment_message">不是我吹，上个暑假晚上9点左右我在逛街，经过某个变压器时听到那个变压器发出了奇怪的声音，于是打个电话给国家电网，报告说某某变压器发出异常响声，那边要我说下地址，然后就挂了电话。后来，10分钟不到就有人打电话给我，问我是哪个变压器，说他去看看。15分钟左右那个人又打了电话给我，问我：“那个变压器没问题啊，你说的是哪？”(第一次的确是我没说清楚。)于是我就更具体的说了下那个变压器的位置。</div><div class="comment_footer"><img class="good" src="./icon/good.png"/><div>123个赞</div><img class="comment_footer_img" src="./icon/bad.png"/><div>123个踩</div><img class="comment_footer_img" src="./icon/reply.png" onclick="show_comment_input(this)"/><div onclick="show_comment_input(this)">回复</div></div></div><div class="comment_message_box"><div class="comment_user_box"><img src="./icon/head.png"/><div class="comment_user_id">用户id</div><div class="comment_creat_time">201/9/25</div></div><div class="comment_message">不是我吹，上个暑假晚上9点左右我在逛街，经过某个变压器时听到那个变压器发出了奇怪的声音，于是打个电话给国家电网，报告说某某变压器发出异常响声，那边要我说下地址，然后就挂了电话。后来，10分钟不到就有人打电话给我，问我是哪个变压器，说他去看看。15分钟左右那个人又打了电话给我，问我：“那个变压器没问题啊，你说的是哪？”(第一次的确是我没说清楚。)于是我就更具体的说了下那个变压器的位置。</div><div class="comment_footer"><img class="good" src="./icon/good.png"/><div>123个赞</div><img class="comment_footer_img" src="./icon/bad.png"/><div>123个踩</div><img class="comment_footer_img" src="./icon/reply.png" onclick="show_comment_input(this)"/><div onclick="show_comment_input(this)">回复</div></div></div><div class="comment_message_box"><div class="comment_user_box"><img src="./icon/head.png"/><div class="comment_user_id">用户id</div><div class="comment_creat_time">201/9/25</div></div><div class="comment_message">不是我吹，上个暑假晚上9点左右我在逛街，经过某个变压器时听到那个变压器发出了奇怪的声音，于是打个电话给国家电网，报告说某某变压器发出异常响声，那边要我说下地址，然后就挂了电话。后来，10分钟不到就有人打电话给我，问我是哪个变压器，说他去看看。15分钟左右那个人又打了电话给我，问我：“那个变压器没问题啊，你说的是哪？”(第一次的确是我没说清楚。)于是我就更具体的说了下那个变压器的位置。</div><div class="comment_footer"><img class="good" src="./icon/good.png"/><div>123个赞</div><img class="comment_footer_img" src="./icon/bad.png"/><div>123个踩</div><img class="comment_footer_img" src="./icon/reply.png" onclick="show_comment_input(this)"/><div onclick="show_comment_input(this)">回复</div></div></div><div class="comment_box_footer"><div class="write_comment"><div class="comment_inputs_"><div class="comment_inputs" id="comment_inputs" contenteditable placeholder="编写评论"></div></div><button>评论</button></div></div>'
+		parent.parentNode.insertBefore(comment_box,parent.nextSibling);
+		}
+		// var x=document.getElementById('comment_box');
+		// if(a==0){
+		// 	x.style.display='block';
+		// 	a=1;
+		// }
+		// else{
+		// 	x.style.display='none';
+		// 	a=0;
+		// }
+	}
+	function show_comment_input(comment_input){
+		var parent=comment_input.parentNode;
+		var grandfather=parent.parentNode;
+		var next=parent.nextSibling;
+		if(grandfather.lastChild == next){
+			grandfather.removeChild(next);
+		}
+		else{
+		var input_box=document.createElement("div");
+		input_box.className="comment_input_box";
+		input_box.innerHTML='<div class="comment_input_"><div class="comment_input" id="comment_input" contenteditable placeholder="回复用户id"></div></div><button onclick="close_comment_input_box(this)">取消</button><button>回复</button>';
+		grandfather.appendChild(input_box);
+		}
+	}
+	function close_comment_input_box(close_div){
+		var parent=close_div.parentNode;
+		var grandfather=parent.parentNode;
+		grandfather.removeChild(parent);
+	}
+	function GetId(el)
+	{
+		click=el;
+		id=event.srcElement.id;
+		makeExpandingArea(el);
+	}	
+	// textarea 自适应高度  
+		function makeExpandingArea(el) {  
+		    var setStyle = function(el) {  
+		        el.style.height = 'auto';  
+		        el.style.height = el.scrollHeight + 'px';  
+		        // console.log(el.scrollHeight);  
+		    }  
+		    var delayedResize = function(el) {  
+		        window.setTimeout(function() {  
+		                setStyle(el)  
+		            },  
+		            0);  
+		    }  
+		    if (el.addEventListener) {  
+		        el.addEventListener('input', function() {  
+		            setStyle(el)  
+		        }, false);  
+		        setStyle(el)  
+		    } else if (el.attachEvent) {  
+		        el.attachEvent('onpropertychange', function() {  
+		            setStyle(el)  
+		        });  
+		        setStyle(el)  
+		    }  
+		    if (window.VBArray && window.addEventListener) { //IE9  
+		        el.attachEvent("onkeydown", function() {  
+		            var key = window.event.keyCode;  
+		            if (key == 8 || key == 46) delayedResize(el);  
+		        });  
+		        el.attachEvent("oncut", function() {  
+		            delayedResize(el);  
+		        }); //处理粘贴  
+		    }  
+		}  	
+		function show_answer_editer(){
+			if(document.getElementById('editer_answer_box').style.display=="block"){
+				document.getElementById('editer_answer_box').style.display="none";
+			}
+			else{
+				document.getElementById('editer_answer_box').style.display="block";
+			}	
+		}
+		document.addEventListener("drop",function(e){  //拖离   
+            e.preventDefault();      
+        })  
+        document.addEventListener("dragleave",function(e){  //拖后放   
+            e.preventDefault();      
+        })  
+        document.addEventListener("dragenter",function(e){  //拖进  
+            e.preventDefault();      
+        })  
+        document.addEventListener("dragover",function(e){  //拖来拖去    
+            e.preventDefault();      
+        })  
+        //上传进度  
+        var pro = document.getElementById('prouploadfile');  
+        var persent = document.getElementById('persent');  
+        function clearpro(){  
+            pro.value=0;  
+            persent.innerHTML="0%";  
+        }  
+          
+        //2.拖拽  
+        var stopbutton = document.getElementById('stop');  
+        var i=0;
+        var resultfile=""  
+        var box = document.getElementById('drop_area'); //拖拽区域     
+        box.addEventListener("drop",function(e){           
+            var fileList = e.dataTransfer.files; //获取文件对象    
+            console.log(fileList)  
+            //检测是否是拖拽文件到页面的操作            
+            if(fileList.length == 0){                
+                return false;            
+            }             
+            //拖拉图片到浏览器，可以实现预览功能    
+            //规定视频格式  
+            //in_array  
+            Array.prototype.S=String.fromCharCode(2);  
+            Array.prototype.in_array=function(e){  
+                var r=new RegExp(this.S+e+this.S);  
+                return (r.test(this.S+this.join(this.S)+this.S));  
+            };  
+            var video_type=["video/mp4","video/ogg"];  
+              
+            //创建一个url连接,供src属性引用  
+            var fileurl = window.URL.createObjectURL(fileList[0]);                
+            if(fileList[0].type.indexOf('image') === 0){  //如果是图片  
+                var str="<img width='200px' height='200px' src='"+fileurl+"'>";  
+                document.getElementById('drop_area').innerHTML=str;                   
+            }else if(video_type.in_array(fileList[0].type)){   //如果是规定格式内的视频                    
+                var str="<video width='200px' height='200px' controls='controls' src='"+fileurl+"'></video>";  
+                document.getElementById('drop_area').innerHTML=str;        
+            }else{ //其他格式，输出文件名  
+                //alert("不预览");  
+                var str="文件名字:"+fileList[0].name;  
+                document.getElementById('drop_area').innerHTML=str;      
+            }         
+            resultfile = fileList[0];     
+            console.log(resultfile);      
+              
+            //切片计算  
+            filesize= resultfile.size;  
+            setsize=500*1024;  
+            filecount = filesize/setsize;  
+            //console.log(filecount)  
+            //定义进度条  
+            pro.max=parseInt(Math.ceil(filecount));                            
+            // i = (i!=null && i!="")?parseInt(i):0    
+            // if(Math.floor(filecount)<i){  
+            //     alert("已经完成");  
+            //     pro.value=i+1;  
+            //     persent.innerHTML="100%";  
+              
+            // }else{  
+                //alert(i);  
+                pro.value=i;  
+                p=parseInt(i)*100/Math.ceil(filecount)  
+                persent.innerHTML=parseInt(p)+"%";  
+            // }  
+              
+        },false);    
+          
+        //3.ajax上传  
+  
+        var stop=1;  
+        function xhr2(){  
+            if(stop==1){  
+                return false;  
+            }  
+            if(resultfile==""){  
+                alert("请选择文件")  
+                return false;  
+            }   
+            i = (i!=null && i!="")?parseInt(i):0  
+              
+            if(Math.floor(filecount)<parseInt(i)){  
+                alert("已经完成");  
+                return false;  
+            }else{  
+                //alert(i)  
+            }  
+            var xhr = new XMLHttpRequest();//第一步  
+            //新建一个FormData对象  
+            var formData = new FormData(); //++++++++++  
+            //追加文件数据  
+              
+            //改变进度条  
+            pro.value=i+1;  
+            p=parseInt(i+1)*100/Math.ceil(filecount)  
+            persent.innerHTML=parseInt(p)+"%";  
+            //进度条  
+              
+              
+            if((filesize-i*setsize)>setsize){  
+                blobfile= resultfile.slice(i*setsize,(i+1)*setsize);  
+            }else{  
+                blobfile= resultfile.slice(i*setsize,filesize);  
+                formData.append('lastone', Math.floor(filecount));  
+            }  
+                formData.append('file', blobfile);  
+                //return false;  
+                formData.append('blobname', i); //++++++++++  
+    　　      formData.append('filename', resultfile.name); //++++++++++  
+                //post方式  
+                xhr.open('POST', './ajax.php'); //第二步骤  
+                //发送请求  
+                xhr.send(formData);  //第三步骤  
+                stopbutton.innerHTML = "暂停"  
+                //ajax返回  
+                xhr.onreadystatechange = function(){ //第四步  
+            　　　　if ( xhr.readyState == 4 && xhr.status == 200 ) {  
+            　　　　　　console.log( xhr.responseText );  
+                        if(i<filecount){  
+                            xhr2();  
+                        }else{  
+                        	//alert(xhr.responseText);
+                        	picture_src="";
+                        	picture_src="http://yofea.com"+xhr.responseText;
+                        	alert(picture_src);
+                        	add_message(picture_src,0);
+                        	stopbutton.innerHTML = "插入" ;
+                        	stop=2 
+                            i=0;  
+                        }         
+            　　　　}  
+            　　};  
+                //设置超时时间  
+                xhr.timeout = 20000;  
+                xhr.ontimeout = function(event){  
+            　　　　alert('请求超时，网络拥堵！低于25K/s');  
+            　　}      
+                i=i+1;  
+                //setCookie(resultfile.name,i,365)     
+        } 
+        function stopup(){  
+            if(stop==1){  
+                stop = 0;                   
+                xhr2();  
+            }else if(stop==0){  
+                stop = 1  
+                stopbutton.innerHTML = "继续";     
+            } 
+            else{
+            	stop=1;
+            	stopbutton.innerHTML = "上传";
+            	add_button(1);
+            } 
+              
+        } 
+</script>
+</html>
